@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import AboutView, MatchListView, MatchDetailView
+from django.contrib.auth.views import LoginView, LogoutView
+from .views import SignUpView
 
 urlpatterns = [
-    path('matches/', MatchListView.as_view(), name = "matches_list"),
-    path('matches/<int:pk>/', MatchDetailView.as_view(), name = 'matches_detail'),
-    path('about/', AboutView.as_view(), name="about"),
-
+    path('signup/', SignUpView.as_view(), name='signup'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="{% static '[material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_css.html' %}
+    {% include 'material/includes/material_js.html' %}
+
+<!--
+     <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+      <link rel = "stylesheet"
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel = "stylesheet"
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+      <script type = "text/javascript"
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script>
+      -->
+</head>
+<body>
+
+<nav>
+    <div class = "nav-wrapper">
+      <a href="{% url 'matches_list' %}" class="brand-logo"> BetInsight</a>
+        {% if request.user.is_authenticated %}
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url "logout" %}">
+                Hello {{ request.user.username }}, Logout</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'matches_list' %}">Matches</a></li>
+        </ul>
+        {% else %}
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{% url "login" %}">Login</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'matches_list' %}">Matches</a></li>
+        </ul>
+        {% endif %}
+
+    </div>
+</nav>
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+
+
